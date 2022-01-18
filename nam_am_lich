@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button{
+		-webkit-appearance: none;
+		margin: 0;
+		}
+	</style>
+	<title>Năm âm lịch</title>
+</head>
+<body>
+  <form id="form">
+  	<table align="center">
+  		<tr>
+  			<th colspan="2">
+  				Tính năm âm lịch
+  			</th>
+  		</tr>
+  		<tr>
+  			<td>
+  				Năm dương lịch
+  			</td>
+  		<tr>
+  			<td>
+  				<input type="number" id="nam_duong" placeholder="Nhập tại đây">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				<input type="button" value="==>" onclick="tinh_nam()">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				Năm âm lịch
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				<input type="text" id="nam_am" >
+  			</td>
+  		</tr>
+  	</table>
+  </form>
+  <script type="text/javascript">
+  	function tinh_nam(){
+  		const form = document.getElementById('form');
+  		const nam_ghi = form.elements['nam_duong'];
+  	var nam_duong = parseInt(nam_ghi.value);
+  	let chi;
+  	let can;
+  	switch ((nam_duong - 3) % 10){
+  		case 0:
+  		can = 'Quý';
+  		break;
+  		case 1:
+  		can = 'Giáp';
+  		break;
+		case 3:
+  		can = 'Ất';
+  		break;
+  		case 4:
+  		can = 'Bính';
+  		break;
+  		case 5:
+  		can = 'Đinh';
+  		break;
+  		case 5:
+  		can = 'Mậu';
+  		break;
+  		case 6:
+  		can = 'Kỷ';
+  		break;
+  		case 7:
+  		can = 'Canh';
+  		break;
+  		case 8:
+  		can = 'Tân';
+  		break;
+  		case 9:
+  		can = 'Nhâm';
+  		break; 
+  	}
+  	switch ((nam_duong - 3) % 12){
+  		case 0:
+  		chi = 'Hợi';
+  		break;
+  		case 1:
+  		chi = 'Tý';
+  		break;
+  		case 2:
+  		chi = 'Sửu';
+  		break;
+  		case 3:
+  		chi = 'Dần';
+  		break;
+  		case 4:
+  		chi = 'Mão';
+  		break;
+  		case 5:
+  		chi = 'Thìn';
+  		break;
+  		case 6:
+  		chi = 'Tỵ';
+  		break;
+  		case 7:
+  		chi = 'Ngọ';
+  		break;
+  		case 8:
+  		chi = 'Mùi';
+  		break;
+  		case 9:
+  		chi = 'Thân';
+  		break;
+  		case 10:
+  		chi = 'Dậu';
+  		break;
+  		case 11:
+  		chi = 'Tuất';
+  		break;
+  	}
+    let nam_am = can + ' ' + chi;
+    document.getElementById('nam_am').value = nam_am;
+  	}
+  </script>
+</body>
+</html>
