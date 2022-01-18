@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button{
+		-webkit-appearance: none;
+		margin: 0;
+		}
+	</style>
+	<title>Tính ngày trong tháng</title>
+</head>
+<body>
+    <form id="form">
+    	<table align="center">
+    		<tr>
+    			<th>
+    				Tính ngày trong tháng
+    			</th>
+    		</tr>
+    		<tr>
+    			<td align="center">
+    				<input type="text" style="width: 15%;" id="month" min="1" max="12" placeholder="Tháng">
+    				<input type="text" style="width: 15%" id="year" placeholder="Năm">
+    			</td>
+    		</tr>
+    		<tr>
+    			<td align="center">
+    				<input type="button" value="Tính số ngày" onclick="tinh_ngay()">
+    			</td>
+    		</tr>
+    		<tr>
+    			<td align="center">
+    			 <span id="ket_qua">
+    			 </span>
+    			</td>
+    		</tr>
+    	</table>
+    </form>
+    <script type="text/javascript">
+    	function tinh_ngay(){
+    		const form = document.getElementById('form');
+    		const month = form.elements['month'];
+    		const year = form.elements['year'];
+
+    	let thang = parseInt(month.value);
+    	let nam = parseInt(year.value);
+    	var ngay;
+    	switch(thang){
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+		  ngay = 31;
+		  break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+		  ngay = 30;
+		  break;
+		case 2:
+		if(nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0 )){
+			ngay = 29;
+		} else {
+			ngay = 28
+		}
+		break;
+	} 
+	document.getElementById('ket_qua').innerHTML = `Tháng ${thang} năm ${nam} có ${ngay} ngày`;
+   }
+    </script>
+</body>
+</html>
