@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button{
+		-webkit-appearance: none;
+		margin: 0;
+		}
+	</style>
+	<title>Tính tiền</title>
+</head>
+<body>
+     <form id="form">
+     	<table align="center">
+     		<tr>
+     			<th>
+     				Tính tiền sau thuế
+     			</th>
+     		</tr>
+     		<tr>
+     			<td>
+     				<input type="text" id="luong" placeholder="Nhập lương tại đây (Triệu)">
+     			</td>
+     		<tr>
+     			<td>
+     				<input type="button" value="Tính thuế thu nhập" onclick="tinh_thue()">
+     			</td>
+     		</tr>
+     		<tr>
+     			<td>
+     				<span>
+     					Thuế:
+     				</span>
+     				<span id="thue">
+     				</span>
+     			</td>
+     		</tr>
+     		<tr>
+     			<td>
+     				<span>
+     				Lương sau khi trừ thuế:
+     				</span>
+     				<span id="luong_rong"></span>
+     			</td>
+     		</tr>
+     	</table>
+     </form>
+</body>
+<script type="text/javascript">
+	function tinh_thue(){
+		const form = document.getElementById('form');
+		const ghi_luong = form.elements['luong'];
+	let luong = parseInt(ghi_luong.value);
+	let thue;
+	if (luong >= 15){
+		thue = (luong * 0.3).toFixed(2);
+	}
+	else if (luong >= 7 && luong < 15){
+		thue = (luong * 0.2).toFixed(2);
+	}
+	else if (luong < 7){
+		thue = (luong * 0.1).toFixed(2);
+	}
+	let luong_rong = luong - thue;
+	document.getElementById('thue').innerHTML = thue;
+	document.getElementById('luong_rong').innerHTML = luong_rong;
+	}
+</script>
+</html>
